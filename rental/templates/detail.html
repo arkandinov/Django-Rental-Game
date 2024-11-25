@@ -1,0 +1,96 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-6 col-lg-6">
+      <!-- Kartu Game -->
+      <div class="card mb-4">
+        <img
+          alt=""
+          style="height: 200px; object-fit: cover"
+          class="card-img-top"
+          src="{{ game.gambar.url }}"
+        />
+        <div class="card-body">
+          <h5 class="card-title fw-bold">{{ game.nama }}</h5>
+          <p class="card-text">
+            {{ game.deskripsi }}<br />
+            Stok: {{ game.stok }}
+          </p>
+        </div>
+      </div>
+
+      <!-- Pesan Berhasil -->
+      {% if pesan_berhasil %}
+      <div class="alert alert-success mt-4">{{ pesan_berhasil }}</div>
+      {% endif %}
+
+      <!-- Form Peminjaman -->
+      {% if game.stok == 0 %}
+      <div class="alert alert-warning">
+        Game ini sedang tidak tersedia. Stok habis. Silakan pilih game lain.
+      </div>
+      {% else %}
+      <div class="mt-4">
+        <h4>Form Peminjaman</h4>
+        <form method="post">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="id_nik" class="form-label">NIK</label>
+            <input
+              type="text"
+              name="nik"
+              id="id_nik"
+              class="form-control"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="id_nama_peminjam" class="form-label"
+              >Nama Peminjam</label
+            >
+            <input
+              type="text"
+              name="nama_peminjam"
+              id="id_nama_peminjam"
+              class="form-control"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="id_tanggal_pinjam" class="form-label"
+              >Tanggal Pinjam</label
+            >
+            <input
+              type="date"
+              name="tanggal_pinjam"
+              id="id_tanggal_pinjam"
+              class="form-control"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="id_tanggal_kembali" class="form-label"
+              >Tanggal Kembali</label
+            >
+            <input
+              type="date"
+              name="tanggal_kembali"
+              id="id_tanggal_kembali"
+              class="form-control"
+              required
+            />
+          </div>
+
+          <button type="submit" class="btn btn-primary">
+            Proses Peminjaman
+          </button>
+        </form>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock content %}

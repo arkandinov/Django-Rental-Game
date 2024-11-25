@@ -1,0 +1,41 @@
+{% extends 'base.html' %} {% block content %}
+<form action="">
+  <div class="mb-3">
+    <label class="form-label">Cari Game:</label>
+    <input type="text" name="nama" class="form-control" />
+  </div>
+  <button type="submit" class="btn btn-primary">Search</button>
+</form>
+{% if searchNama %} Pencarian untuk <strong>{{ searchNama }}</strong>
+{% endif %}
+<br />
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  {% for game in games %}
+  <div class="col">
+    <div class="card">
+      <img
+        alt=""
+        class="card-img-top"
+        src="{{ game.gambar.url }}"
+        style="width: 100%; height: auto; max-width: 300px; margin: 0 auto"
+      />
+      <div class="card-body">
+        <h5 class="card-title fw-bold">
+          {{ game.nama }} | {{ game.platform.nama }}
+        </h5>
+        <p class="card-text">
+          {{ game.deskripsi }}
+          <br />
+          Stok: {{ game.stok }}
+          <br />
+          Platform: {{ game.platform.nama }}
+          <a href="{% url 'detail' game.id %}">
+            <h5 class="card-title fw-bold">Detail</h5>
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock content %}
