@@ -8,7 +8,7 @@ This is a web application for managing game rentals. Features include:
 ## Features
 1. Game management for admins.
 2. Game search and rental for visitors.
-3. Rental transaction tracking.
+3. Rental transaction tracking for admin.
 
 ## Installation
 1. Clone the repository:
