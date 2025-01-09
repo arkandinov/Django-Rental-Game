@@ -11,10 +11,15 @@ This is a web application for managing game rentals. Features include:
 3. Rental transaction tracking for admin.
 
 ## Installation
-1. Clone the repository:
-   ```bash
-   git clone <repository-url>
-2. Install Django using pip, with this command:
+1. Install Django using pip, with this command:
    ```bash
    py -m pip install Django
-
+2. Clone the repository:
+   ```bash
+   git clone <repository-url>
+3. Change to project directory :
+   ```bash
+   cd Django-Rental-Game
+4. Run project:
+   ```bash
+   python .\manage.py runserver
