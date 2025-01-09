@@ -14,8 +14,7 @@ This is a web application for managing game rentals. Features include:
 1. Clone the repository:
    ```bash
    git clone <repository-url>
-
-## Install Django
-Install Django using pip, with this command:
+2 Install Django using pip, with this command:
    ```bash
    py -m pip install Django
+
